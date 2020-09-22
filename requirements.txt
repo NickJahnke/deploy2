@@ -1,0 +1,11 @@
+bcrypt==3.2.0
+cffi==1.14.2
+Django==2.2.4
+django-appconf==1.0.4
+django-sorter==0.2
+django-ttag==3.0
+pycparser==2.20
+pytz==2020.1
+six==1.15.0
+sqlparse==0.3.1
+URLObject==2.4.3

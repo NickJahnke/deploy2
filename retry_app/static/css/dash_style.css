@@ -1,0 +1,26 @@
+body{
+    width: 970px;
+}
+#box{
+    height: 50px;
+    width:300px;
+    border:3px solid black;
+    }
+p{
+    display: flex;
+}
+#top_bar{
+    display: flex;
+    justify-content: space-between;
+}
+#thought{
+    display: flex;
+}
+li{
+    display: flex;
+    border-bottom: 1px solid black;
+}
+#links{
+  display: inline-block;
+    width: 100px;
+}

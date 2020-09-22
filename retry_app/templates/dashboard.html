@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/dash_style.css'%}">
+
+</head>
+
+<body>
+    <div id='top_bar'>
+        Hello {{user.first_name}}!
+        <a href="/logout">Logout</a>
+    </div>
+    <ul class="messages">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/create_thought" method='POST'>
+            {% csrf_token %}
+            <fieldset>
+                <input type="text" name="new_desc">
+                <button type="submit">Think</button>
+            </fieldset>
+        </form>
+        <ul>
+
+            {% for thought in thoughts %}
+            <li>
+                <div id='thought'>
+                    <p>{{thought.uploaded_by.first_name}} says:
+                    <p id='box'>{{thought.description}}</p>
+                </div>
+                </p><a href="/thoughts/{{thought.id}}">Details   </a>
+                <divn id = 'links'>
+                    {% if user.id == thought.uploaded_by.id%}
+                    |
+                    <a href="/remove_thought/{{thought.id}}"> Remove</a>
+                    {% endif %}
+                    <p>{{thought.users_who_like.all | length}} people like this</p>
+                </div>
+            </li>
+            
+            {% endfor %}
+        </ul>
+
+</body>
+
+</html>

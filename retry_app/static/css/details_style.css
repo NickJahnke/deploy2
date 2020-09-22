@@ -1,0 +1,27 @@
+table {
+    border-collapse: collapse;
+    width: 600px;
+  
+  }
+  
+  table, th, td {
+    border: 2px solid black;
+  
+  }
+  
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  #thought_box_right{
+      display: flex;
+      height: 50px;
+      width:300px;
+      border:1px solid black;
+  }
+  #thought_box{
+      display: flex;
+  }
+ #top_bar{
+     display: flex;
+     justify-content: space-between;
+ }

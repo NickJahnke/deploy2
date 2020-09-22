@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/register" method="POST" id = 'reg_form'>
+        {% csrf_token %}
+        <fieldset>
+            <legend>Register</legend>
+            <label for="">First name:</label>
+            <input type="text" name="first_name">
+            <label for="">Last name:</label>
+            <input type="text" name="last_name">
+            <label for="">Email:</label>
+            <input type="email" name="email">
+            <label for="">Password:</label>
+            <input type="password" name="password">
+            <label for="">Confirm password:</label>
+            <input type="password" name="confirm_password">
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+
+  
+    <legend>
+        
+        <form action="/login" method="POST" id = 'log_form'>
+            {% csrf_token %}
+            <fieldset>
+            <legend>Login</legend>
+            <label for="">Email:</label>
+            <input type="email" name="login_email">
+            <label for="">Password:</label>
+            <input type="password" name='login_password'>
+            <button type="submit">Login</button>
+        </fieldset>
+        </form>
+
+
+    </legend>
+</body>
+</html>

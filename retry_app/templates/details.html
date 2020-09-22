@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/details_style.css'%}">
+</head>
+
+<body>
+    <div id='top_bar'>
+        <a href="/thoughts">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div id='thought_box'>
+        <p>{{thought.uploaded_by.first_name}} says:
+        <p id='thought_box_right'>{{thought.description}}</p>
+    </div>
+    
+    
+    {% if logged_user in thought.users_who_like.all %}
+    <a href="/unlike_thought/{{thought.id}}">Unlike</a>
+    {% else %}
+    <a href="/like_thought/{{thought.id}}">Like</a>
+    {% endif %}
+
+
+    <table>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+        </tr>
+        {% for user in users %}
+        {% if user.id != thought.uploaded_by.id%}
+        <tr>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        
+        {% for user in users %}
+        {% if user.id == thought.uploaded_by.id%}
+        <tr>
+            <td>{{thought.uploaded_by.first_name}}</td>
+            <td>{{thought.uploaded_by.last_name}}</td>
+
+        </tr>
+        {% endif%}
+        {% endfor %}
+        
+
+        <table>
+</body>
+
+</html>

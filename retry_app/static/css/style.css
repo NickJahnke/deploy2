@@ -1,0 +1,19 @@
+*{
+   
+    padding: 0 auto;
+}
+
+#reg_form{
+    display: flex;
+    height: 300px;
+    width: 150px;
+}
+#log_form{
+    display: flex;
+    height: 300px;
+    width: 150px;
+}
+body{
+    display: flex;
+    justify-content: space-around;
+}
